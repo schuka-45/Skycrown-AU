@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /responsible-gaming.html
+Disallow: /terms.html
+Disallow: /privacy.html
+Disallow: /about.html
+Disallow: /contact.html
+
+Sitemap: https://skycrown-casino.top/sitemap.xml
