@@ -269,6 +269,111 @@ footer p{font-size:12px;color:var(--muted);max-width:820px;margin:0 auto 8px;lin
 }
 .pk-img-wrap img{animation:slotPulse 3s ease-in-out infinite;transition:transform 0.4s,filter 0.3s}
 .pk:hover .pk-img-wrap img{transform:scale(1.07);animation:none;filter:brightness(1.1) saturate(1.2)}
+
+
+/* ═══ WILD TOKYO POPUP ═══ */
+#wt-overlay{
+  position:fixed;inset:0;z-index:10000;
+  background:rgba(0,0,0,0.45);backdrop-filter:blur(3px);
+  display:none;align-items:center;justify-content:center;
+  padding:20px;
+}
+#wt-overlay.show{display:flex}
+#wt-popup{
+  position:relative;
+  background:linear-gradient(160deg,#0D0D1A 0%,#1A0A0F 50%,#0D0D1A 100%);
+  border:1px solid rgba(255,36,66,0.35);
+  border-radius:24px;
+  padding:40px 36px 36px;
+  max-width:480px;width:100%;
+  text-align:center;
+  box-shadow:0 0 80px rgba(255,36,66,0.2),0 20px 60px rgba(0,0,0,0.6);
+  animation:popupIn 0.5s cubic-bezier(0.34,1.56,0.64,1);
+  overflow:hidden;
+}
+@keyframes popupIn{
+  from{opacity:0;transform:scale(0.8) translateY(30px)}
+  to{opacity:1;transform:scale(1) translateY(0)}
+}
+/* Top neon line */
+#wt-popup::before{
+  content:'';position:absolute;top:0;left:15%;right:15%;height:2px;
+  background:linear-gradient(90deg,transparent,#FF2442,transparent);
+}
+#wt-close{
+  position:absolute;top:14px;right:16px;
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+  border-radius:6px;color:rgba(255,255,255,0.5);font-size:14px;
+  width:28px;height:28px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .2s;line-height:1;
+}
+#wt-close:hover{background:rgba(255,36,66,0.2);color:#fff;border-color:rgba(255,36,66,0.4)}
+
+/* Logo + coins container */
+.wt-logo-wrap{
+  position:relative;width:140px;height:140px;margin:0 auto 24px;
+}
+.wt-logo-img{
+  width:110px;height:110px;border-radius:16px;
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  z-index:2;box-shadow:0 0 30px rgba(220,30,30,0.4);
+}
+
+/* Orbiting coins */
+.coin{
+  position:absolute;font-size:22px;
+  animation:orbit linear infinite;
+  transform-origin:70px 70px;
+  top:0;left:0;
+}
+.coin:nth-child(1){animation-duration:4s;animation-delay:0s}
+.coin:nth-child(2){animation-duration:4s;animation-delay:-1s}
+.coin:nth-child(3){animation-duration:4s;animation-delay:-2s}
+.coin:nth-child(4){animation-duration:4s;animation-delay:-3s}
+.coin:nth-child(5){animation-duration:6s;animation-delay:-0.5s;font-size:16px}
+.coin:nth-child(6){animation-duration:6s;animation-delay:-2.5s;font-size:16px}
+
+@keyframes orbit{
+  from{transform:rotate(0deg) translateX(58px) rotate(0deg)}
+  to{transform:rotate(360deg) translateX(58px) rotate(-360deg)}
+}
+
+/* Welcome pack label */
+.wt-pack-label{
+  font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:#9B6BFF;margin-bottom:8px;
+}
+/* Big bonus */
+.wt-bonus-big{
+  font-family:'Rajdhani',sans-serif;
+  font-size:clamp(36px,8vw,52px);font-weight:700;line-height:1;
+  color:#FFD700;margin-bottom:4px;
+  text-shadow:0 0 30px rgba(255,215,0,0.4);
+}
+.wt-bonus-big em{color:#fff;font-style:normal;font-size:0.75em}
+.wt-bonus-sub{
+  font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:600;
+  color:#fff;margin-bottom:28px;opacity:0.9;
+}
+/* CTA button */
+.wt-cta{
+  display:block;
+  background:linear-gradient(135deg,#FF2442,#FF0066);
+  color:#fff;font-family:'Rajdhani',sans-serif;font-weight:700;
+  font-size:18px;letter-spacing:2px;padding:16px 32px;
+  border-radius:12px;text-decoration:none;
+  box-shadow:0 0 30px rgba(255,36,66,0.4),inset 0 1px 0 rgba(255,255,255,0.15);
+  transition:all .2s;border:1px solid rgba(255,100,100,0.3);
+  position:relative;overflow:hidden;
+}
+.wt-cta::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.12),transparent);
+  opacity:0;transition:opacity .2s;
+}
+.wt-cta:hover{box-shadow:0 0 50px rgba(255,36,66,0.6);transform:translateY(-1px)}
+.wt-cta:hover::after{opacity:1}
+.wt-fine{font-size:11px;color:rgba(255,255,255,0.3);margin-top:12px}
 </style>
 </head>
 <body>
@@ -937,6 +1042,79 @@ footer p{font-size:12px;color:var(--muted);max-width:820px;margin:0 auto 8px;lin
   <p style="margin-top:8px;color:rgba(255,160,160,.6)">⚠️ Gambling can be addictive. Please play responsibly. If you need support, contact the National Gambling Helpline: <a href="https://www.gamblinghelponline.org.au" style="color:var(--red2)">1800 858 858</a> (free, 24/7).</p>
   <p style="margin-top:10px;font-size:11px">© 2025 SkyCrown-AU.com | This site is not affiliated with or endorsed by SkyCrown Casino. 18+ only.</p>
 </footer>
+
+
+
+
+
+<!-- WILD TOKYO POPUP -->
+<div id="wt-overlay" onclick="if(event.target===this)closePopup()">
+  <div id="wt-popup">
+    <button id="wt-close" onclick="closePopup()">✕</button>
+
+    <!-- Logo with orbiting coins -->
+    <div class="wt-logo-wrap">
+      <span class="coin">🪙</span>
+      <span class="coin">💰</span>
+      <span class="coin">🪙</span>
+      <span class="coin">💰</span>
+      <span class="coin">✨</span>
+      <span class="coin">⭐</span>
+      <img src="data:image/webp;base64,UklGRkAEAABXRUJQVlA4TDMEAAAv+UA+AMfAJgCANDj9I/K5u2012AQAkIYEBHD76F+Iz32ubAMALBPr/wez2ao7/wEA+P+/c9/yaFyOQs3mcRj7Fmo29i2PRnlLOkNYrS5D35ZQs3Q3QEOUcQxz3CgYEoxxFDEcA2nbtP5tb/slRMQEcNfgCXmWYNtq21pcjGVbQm3+w32STHB+L4no/wQ4jiQ3bpDCYnHlH6sPkYDhb0T/J4A+/v/4/+P/j/8//v/HMdQ862W6Kf4lVfP42k3174FlPZ6GYxHjPLswLrMT4zrZMc6TA2M1KjCX9jxYHba1QPrT6HHcuRWW/ihEXRnYCbD3BzGu5VIQHgO7GjtBeAiyrk7sBOcj4HG5Yye4HsBoyN925vVLNpEBkjtWS/60SDcTMIE6Q/R0LILSQvQFa4tFUHxIVNvYBJ0j9sVozE3kEVxBW2MRZcSuolrHPuCJ1ZzrYE/TfsvyCI6s2tsayogdZb88dXxz4Ac2IM5knsRvBvvhBDySsBjdhMfkEdygRsSBA8tHd7I9pozYDWfgY23HTWnfBLgZeKlsuL3lbwG7iSEfUoalvrNzBC9aQ+ojEcbxfSUZsRfYkHhix+omKzjeVcIEXiaeLQvRsQJ+TwkL6sRrSD8TiIjSyvx10ZVu2zY5yWlOESc40VA3f4a8ZsgYHuRVxzywFZq2/d2ND/pukEarx7fgIL815ifn2tFpPTnRJwX6pslSotvKS9mM9Dl796RjPsOZDOu2onakVniZdPpOkEqmTWb8ClIjfpV0cp01ZDwhnazDBC+h/ARp5Nun8E/6nPz2+dK3EDokPvkVqjWkbkymkJXTRuTO/voYcW014NoYA3Jrfz20PfYm1T1l8dbNvtCwfFroFUIIl5poCJMUjltXiLMzJAu9QgjhUm+izeXLhGW5VwRTaQYJGBVAbylQRxmo96pgKtXZrC1/Ba6ccy632ga+NGe9GPIKQaD7gnO046TbXcCX5qwXQ7ozRmN+NQYSmSYg0zADapfAzUCB+iUD9V4CMg0zoM4kq23KXTsCTQWHWWUkshRcX3acdD9gp+mOw5tGW1zGSLMLYrZDyFTBjSgD1WBDnEVs3ua1aoDOEmCl4GJDgovowEn3O6CzBHyfVCAvdYuY0oZIxgpuBagGbUmB7s+qobVSoFkMuxUJ4oGTDCuQl5o/sftMunWLEAIQzRQMVCN9mEAvh9zXAJ0lgCyIKALFigQ4ybItJaA/YVSrvhSxWZFAzBQoJgSkWQTTU/XaJiQ4ZzsOswLEF1QbwTkLCI9h1pXJLhFcRxlIZhTB1VkE11EG0mNELM+lyXmzCmzaiVpibM2OBLuzyti0E7XE4PagIc1IGVPO9IICJF+kjCln+taHoEZUT/kisZGhhjCiFI5ukkNoRlQv+SJXpXdIe5AXfe+DFpn1MjOMoI//P/7/+P/j/4///50OAA==" class="wt-logo-img" alt="Wild Tokyo Casino">
+    </div>
+
+    <!-- Bonus info -->
+    <div class="wt-pack-label">WELCOME PACK</div>
+    <div class="wt-bonus-big">250% <em>up to</em> A$3,000</div>
+    <div class="wt-bonus-sub">+ 600 Free Spins</div>
+
+    <a href="https://bobaffs.org/click?o=355&a=178" class="wt-cta" target="_blank" rel="noopener" onclick="closePopup()">
+      🎰 CLAIM BONUS NOW
+    </a>
+    <div class="wt-fine">18+ | New players only | T&Cs apply | Play responsibly</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var overlay = document.getElementById('wt-overlay');
+  var shown = false;
+
+  window.closePopup = function(){
+    overlay.classList.remove('show');
+  };
+
+  function showPopup(){
+    if(!shown){
+      shown = true;
+      overlay.classList.add('show');
+    }
+  }
+
+  // Show on return to tab after clicking affiliate link
+  var clicked = false;
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a');
+    if(a && a.href && a.href.includes('bobaffs.org')){
+      clicked = true;
+    }
+  });
+
+  document.addEventListener('visibilitychange', function(){
+    if(document.visibilityState === 'visible' && clicked){
+      setTimeout(showPopup, 800);
+    }
+  });
+
+  // Exit intent
+  document.addEventListener('mouseleave', function(e){
+    if(e.clientY <= 0){ showPopup(); }
+  });
+
+  // Show after 40 seconds
+  setTimeout(showPopup, 40000);
+})();
+</script>
 
 </body>
 </html>
